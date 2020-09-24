@@ -2,14 +2,18 @@ package com.fordoctors.fordoctors.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.fordoctors.fordoctors.DetailsActivity;
@@ -22,6 +26,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.fordoctors.fordoctors.MainActivity.mProgressDialog;
 
 public class PrescriptionsAdapter extends RecyclerView.Adapter<PrescriptionsAdapter.ImageViewHolder> implements Filterable {
 
@@ -60,12 +66,34 @@ public class PrescriptionsAdapter extends RecyclerView.Adapter<PrescriptionsAdap
         mUsersDatabase.keepSynced(true);
 
         final Prescription prescription = mPrescriptionList.get(position);
-        holder.Name.setText("Name : "+prescription.getName());
+        holder.Name.setText(prescription.getName());
         holder.Details.setText("Age : "+prescription.getAge()+' '+"Gender : "+prescription.getGender());
-        holder.Location.setText("City : "+prescription.getCity()+' '+"State : "+prescription.getState()+' '+"Country : "+prescription.getCountry());
-        holder.Email.setText("Email : "+prescription.getEmail());
-        holder.Timestamp.setText("Date - Time : "+prescription.getTimestamp());
+        holder.Location.setText(prescription.getAddress()+", "+prescription.getCity()+", "+prescription.getState()+", "+prescription.getCountry());
+        holder.Phone_Number.setText(prescription.getPhone_number());
+        holder.Timestamp.setText(prescription.getTimestamp());
 
+        holder.More.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu popupMenu = new PopupMenu(mContext, v);
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+                            case R.id.call:
+                                Intent intent = new Intent(Intent.ACTION_DIAL);
+                                intent.setData(Uri.parse("tel:"+prescription.getPhone_number()));
+                                mContext.startActivity(intent);
+                                return true;
+                            default:
+                                return false;
+                        }
+                    }
+                });
+                popupMenu.inflate(R.menu.menu_call);
+                popupMenu.show();
+            }
+        });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +104,8 @@ public class PrescriptionsAdapter extends RecyclerView.Adapter<PrescriptionsAdap
                 mContext.startActivity(intent);
             }
         });
+
+        mProgressDialog.dismiss();
 
     }
 
@@ -125,16 +155,18 @@ public class PrescriptionsAdapter extends RecyclerView.Adapter<PrescriptionsAdap
 
     public class ImageViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView Name, Email, Details, Location, Timestamp;
+        private TextView Name, Phone_Number, Details, Location, Timestamp;
+        private ImageView More;
 
         public ImageViewHolder(View itemView) {
             super(itemView);
 
             Name=itemView.findViewById(R.id.name);
-            Email=itemView.findViewById(R.id.email);
+            Phone_Number=itemView.findViewById(R.id.phone_number);
             Location=itemView.findViewById(R.id.location);
             Details=itemView.findViewById(R.id.details);
             Timestamp=itemView.findViewById(R.id.timestamp);
+            More = itemView.findViewById(R.id.more);
 
 
         }

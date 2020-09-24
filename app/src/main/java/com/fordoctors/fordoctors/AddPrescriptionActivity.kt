@@ -3,11 +3,11 @@ package com.fordoctors.fordoctors
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
-import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.widget.ArrayAdapter
 import android.widget.EditText
@@ -52,11 +52,10 @@ class AddPrescriptionActivity : AppCompatActivity() {
         Glide.with(this).load(userObject.Profile_Image).into(profile_image);
         add_prescription_name.text = userObject.Name
         add_prescription_email.text = userObject.Email
+        add_prescription_phone_number.text = userObject.Phone_Number
         add_prescription_age.text = userObject.Age
         add_prescription_gender.text = userObject.Gender
-        add_prescription_city.text = userObject.City
-        add_prescription_state.text = userObject.State
-        add_prescription_country.text = userObject.Country
+        add_prescription_address.text = userObject.Address+", "+userObject.City+", "+userObject.State+", "+userObject.Country
 
         var mAuth : FirebaseAuth = FirebaseAuth.getInstance()
         var mCurrentUserId = mAuth.getCurrentUser()?.getUid()
@@ -68,7 +67,7 @@ class AddPrescriptionActivity : AppCompatActivity() {
         val key: String = mPatientDatabase.push().getKey()
 
         val recyclerView = findViewById(R.id.prescription_list) as RecyclerView
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+        recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         val users = ArrayList<Medicine>()
         val edit_text_details = findViewById(R.id.add_prescription_details) as EditText
         val btn_click_me = findViewById(R.id.add_prescription) as FloatingActionButton
@@ -1119,6 +1118,7 @@ class AddPrescriptionActivity : AppCompatActivity() {
 
                 var name = dataSnapshot.child("name").value!!.toString()
                 var email = dataSnapshot.child("email_id").value!!.toString()
+                var phone_number = dataSnapshot.child("phone_number").value!!.toString()
 
                 submit.setOnClickListener {
 
@@ -1133,12 +1133,14 @@ class AddPrescriptionActivity : AppCompatActivity() {
                             hashMap.put("name", userObject.Name)
                             hashMap.put("city", userObject.City)
                             hashMap.put("state", userObject.State)
+                            hashMap.put("address", userObject.Address)
                             hashMap.put("gender", userObject.Gender)
                             hashMap.put("country", userObject.Country)
                             hashMap.put("age", userObject.Age)
                             hashMap.put("timestamp", currentDate)
                             hashMap.put("profile_image", userObject.Profile_Image)
                             hashMap.put("email", userObject.Email)
+                            hashMap.put("phone_number", userObject.Phone_Number)
                             hashMap.put("details", edit_text_details.text.toString())
 
                             mPatientDatabase.child(key).setValue(hashMap).addOnCompleteListener { task ->
@@ -1149,7 +1151,7 @@ class AddPrescriptionActivity : AppCompatActivity() {
                                     mPatientDatabase.child(key).updateChildren(hashMap1 as Map<String, Any>?).addOnCompleteListener { task1 ->
                                         if (task1.isSuccessful) {
                                             val user = PrescriptionObjects(key, mCurrentUserId.toString(), name, currentDate, email,
-                                                    users, edit_text_details.text.toString(),
+                                                    phone_number, users, edit_text_details.text.toString(),
                                                     dataSnapshot.child("profile_image").value!!.toString())
                                             val serializeString = Gson().toJson(user)
                                             val encryptedString = EncryptionHelper.getInstance().encryptionString(serializeString).encryptMsg()

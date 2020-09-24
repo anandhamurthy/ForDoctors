@@ -9,7 +9,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/name"
-            android:fontFamily="@font/nunito"
+            android:fontFamily="@font/quicksand_medium"
             android:layout_weight="10"
             android:textColor="@color/colorBlack"
             android:textSize="15dp"
@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/morning"
-            android:fontFamily="@font/nunito"
+            android:fontFamily="@font/quicksand_medium"
             android:textColor="@color/colorBlack"
             android:gravity="center"
             android:layout_weight="1"
@@ -31,7 +31,7 @@
             android:textColor="@color/colorBlack"
             android:id="@+id/afternoon"
             android:gravity="center"
-            android:fontFamily="@font/nunito"
+            android:fontFamily="@font/quicksand_medium"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:textSize="15dp"
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:textSize="15dp"
             android:textColor="@color/colorBlack"
-            android:fontFamily="@font/nunito"
+            android:fontFamily="@font/quicksand_medium"
             android:gravity="center"
             android:textStyle="bold"/>
 
@@ -56,7 +56,7 @@
             android:textColor="@color/colorBlack"
             android:layout_height="wrap_content"
             android:textSize="15dp"
-            android:fontFamily="@font/nunito"
+            android:fontFamily="@font/quicksand_medium"
             android:gravity="center"
             android:textStyle="bold"/>
 
@@ -69,7 +69,7 @@
             android:id="@+id/quantity"
             android:layout_height="wrap_content"
             android:textSize="15dp"
-            android:fontFamily="@font/nunito"
+            android:fontFamily="@font/quicksand_medium"
             android:textStyle="bold"/>
     </TableRow>
 </TableLayout>

@@ -9,9 +9,11 @@
         android:orderInCategory="100"
         android:title="search"
         app:showAsAction="always"
-        app:actionViewClass="android.support.v7.widget.SearchView" />
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
     <item  android:id="@+id/source"
         android:title="Source"/>
+    <item  android:id="@+id/report"
+        android:title="Reports"/>
     <item  android:id="@+id/logout"
         android:title="Logout"/>
 </menu>

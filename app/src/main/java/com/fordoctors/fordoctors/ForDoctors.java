@@ -1,7 +1,7 @@
 package com.fordoctors.fordoctors;
 
 
-import android.support.multidex.MultiDexApplication;
+import androidx.multidex.MultiDexApplication;
 
 public class ForDoctors extends MultiDexApplication {
 }

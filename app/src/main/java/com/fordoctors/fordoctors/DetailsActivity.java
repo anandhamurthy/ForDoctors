@@ -2,9 +2,9 @@ package com.fordoctors.fordoctors;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -15,8 +15,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DetailsActivity extends AppCompatActivity {
 
-    private TextView Details_Name, Details_Email, Details_Age, Details_Timestamp, Details_Gender, Details_City, Details_State
-            , Details_Country, Details_Details;
+    private TextView Details_Name, Details_Email, Details_Phone_Number, Details_Age, Details_Timestamp, Details_Gender, Details_Address, Details_Details;
     private RecyclerView Medicine_List;
     private CircleImageView Details_Profile_Image;
     @Override
@@ -31,11 +30,10 @@ public class DetailsActivity extends AppCompatActivity {
 
         Details_Name=findViewById(R.id.details_name);
         Details_Email=findViewById(R.id.details_email);
+        Details_Phone_Number=findViewById(R.id.details_phone_number);
         Details_Age=findViewById(R.id.details_age);
         Details_Gender=findViewById(R.id.details_gender);
-        Details_City=findViewById(R.id.details_city);
-        Details_State=findViewById(R.id.details_state);
-        Details_Country=findViewById(R.id.details_country);
+        Details_Address=findViewById(R.id.details_address);
         Details_Details=findViewById(R.id.details_details);
         Details_Timestamp=findViewById(R.id.details_timestamp);
         Medicine_List=findViewById(R.id.details_prescriptions_list);
@@ -44,9 +42,8 @@ public class DetailsActivity extends AppCompatActivity {
         Details_Name.setText(prescription.getName());
         Details_Age.setText(prescription.getAge());
         Details_Gender.setText(prescription.getGender());
-        Details_City.setText(prescription.getCity());
-        Details_State.setText(prescription.getState());
-        Details_Country.setText(prescription.getCountry());
+        Details_Phone_Number.setText(prescription.getPhone_number());
+        Details_Address.setText(prescription.getAddress()+", "+prescription.getCity()+", "+prescription.getState()+", "+prescription.getCountry());
         Details_Email.setText(prescription.getEmail());
         Details_Timestamp.setText(prescription.getTimestamp());
         Details_Details.setText(prescription.getDetails());

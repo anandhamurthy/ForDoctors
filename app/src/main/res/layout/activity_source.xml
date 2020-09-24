@@ -12,16 +12,16 @@
         android:layout_height="wrap_content"
         android:text="Credits"
         android:textSize="20dp"
-        android:fontFamily="@font/nunito"
+        android:fontFamily="@font/quicksand_medium"
         android:layout_margin="10dp"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/colorPrimary"/>
 
     <TextView
         android:layout_width="match_parent"
         android:text="QR Generator and Scanner"
         android:textSize="15dp"
-        android:fontFamily="@font/nunito"
         android:layout_margin="10dp"
+        android:fontFamily="@font/quicksand_medium"
         android:textColor="@color/colorBlack"
         android:layout_height="wrap_content"/>
 
@@ -38,9 +38,9 @@ https://github.com/dm77/barcodescanner/graphs/contributors
 License
 Apache License, Version 2.0"
         android:textSize="15dp"
-        android:textColor="@color/colorBlack"
         android:layout_margin="10dp"
-        android:fontFamily="@font/nunito"
+        android:textColor="@color/colorBlack"
+        android:fontFamily="@font/quicksand_medium"
         android:layout_height="wrap_content"/>
 
 </LinearLayout>

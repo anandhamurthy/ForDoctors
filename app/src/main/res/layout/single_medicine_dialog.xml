@@ -5,7 +5,7 @@
     android:background="@color/colorWhite"
     android:orientation="vertical" >
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
@@ -17,19 +17,19 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:fontFamily="@font/nunito"
+            android:fontFamily="@font/quicksand_medium"
             android:inputType="textCapWords"
             android:hint="Medicine Name"
             android:textColor="@color/colorAccent"
-            android:textSize="20dp" />
-    </android.support.design.widget.TextInputLayout>
+            android:textSize="16dp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
         android:id="@+id/morning"
         android:layout_width="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito"
+        android:fontFamily="@font/quicksand_medium"
         android:inputType="number"
         android:hint="Morning"
         android:layout_marginLeft="10dp" />
@@ -39,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:fontFamily="@font/nunito"
+        android:fontFamily="@font/quicksand_medium"
         android:layout_marginLeft="10dp"
         android:hint="AfterNoon" />
 
@@ -47,7 +47,7 @@
         android:id="@+id/evening"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito"
+        android:fontFamily="@font/quicksand_medium"
         android:inputType="number"
         android:layout_marginLeft="10dp"
         android:hint="Evening" />
@@ -55,19 +55,19 @@
     <EditText
         android:id="@+id/night"
         android:layout_width="wrap_content"
-        android:fontFamily="@font/nunito"
+        android:fontFamily="@font/quicksand_medium"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:inputType="number"
         android:hint="Night" />
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <EditText
             android:id="@+id/quantity"
             android:layout_width="match_parent"
-            android:fontFamily="@font/nunito"
+            android:fontFamily="@font/quicksand_medium"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
@@ -75,8 +75,8 @@
             android:inputType="number"
             android:hint="Quantity"
             android:textColor="@color/colorAccent"
-            android:textSize="20dp" />
-    </android.support.design.widget.TextInputLayout>
+            android:textSize="16dp" />
+    </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
             android:background="@color/colorBlack"
             android:clickable="true"
             android:text="Cancel"
-            android:fontFamily="@font/nunito"
+            android:fontFamily="@font/quicksand_medium"
             android:textColor="@color/colorWhite"
             android:textStyle="bold" />
 
@@ -99,7 +99,7 @@
             android:id="@+id/yes"
             android:layout_width="100dp"
             android:layout_height="30dp"
-            android:fontFamily="@font/nunito"
+            android:fontFamily="@font/quicksand_medium"
             android:layout_marginLeft="5dp"
             android:background="@color/colorBlack"
             android:clickable="true"

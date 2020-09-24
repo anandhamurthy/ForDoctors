@@ -1,12 +1,9 @@
 package com.fordoctors.fordoctors;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,10 +16,7 @@ public class Login extends AppCompatActivity {
 
     private CountryCodePicker Login_Country_Code;
     private EditText Login_Phone_Number;
-    private DatabaseReference mUsersDatabase;
-    private FirebaseAuth mAuth;
-    private FirebaseUser mFirebaseUser;
-    private String mCurrentUserId, Code="+91";
+    private String Code="+91";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,13 +24,11 @@ public class Login extends AppCompatActivity {
 
         Login_Phone_Number = findViewById(R.id.login_phone_number);
         Login_Country_Code = findViewById(R.id.login_country_code);
-        Login_Country_Code.registerPhoneNumberTextView(Login_Phone_Number);
 
         Login_Country_Code.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
             @Override
             public void onCountrySelected(Country selectedCountry) {
                 Code=Login_Country_Code.getSelectedCountryCodeWithPlus();
-
             }
         });
 

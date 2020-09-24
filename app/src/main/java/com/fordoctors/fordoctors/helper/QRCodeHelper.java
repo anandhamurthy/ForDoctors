@@ -2,7 +2,7 @@ package com.fordoctors.fordoctors.helper;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.annotation.IntRange;
+import androidx.annotation.IntRange;
 import android.util.Log;
 
 

@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "729917773069",
+    "firebase_url": "https://for-doctors-83d62.firebaseio.com",
+    "project_id": "for-doctors-83d62",
+    "storage_bucket": "for-doctors-83d62.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:729917773069:android:0060b7ba127fed39",
+        "android_client_info": {
+          "package_name": "com.fordoctors.fordoctors"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "729917773069-u1pvcatt2k5mjmp7l3a8h3guueqhg9gu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fordoctors.fordoctors",
+            "certificate_hash": "adc8dd1095cb4cf39794a4b2eee34f5ae2e8be6f"
+          }
+        },
+        {
+          "client_id": "729917773069-dmpq73mphhrpqh4v2k8e1grusprhl37m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fordoctors.fordoctors",
+            "certificate_hash": "7fba22248f2ebd7d929fde93b9b567af355325d7"
+          }
+        },
+        {
+          "client_id": "729917773069-if41j7tt7eq3u6imcapjfocsinces47t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2dcAXhtmATW_PCkTkD4YHqiDA87C8P6w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "729917773069-if41j7tt7eq3u6imcapjfocsinces47t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

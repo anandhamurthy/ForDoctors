@@ -1,18 +1,23 @@
 package com.fordoctors.fordoctors;
 
+import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
+
+import androidx.core.content.FileProvider;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -30,9 +35,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
@@ -48,6 +54,8 @@ public class MainActivity extends AppCompatActivity implements PrescriptionsAdap
     private RelativeLayout mNoPatients;
     private String mCurrentUserId;
 
+    public static ProgressDialog mProgressDialog;
+
     private DatabaseReference mPatientsDatabase;
     private FirebaseUser mCurrentUser;
 
@@ -58,6 +66,12 @@ public class MainActivity extends AppCompatActivity implements PrescriptionsAdap
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mProgressDialog = new ProgressDialog(MainActivity.this);
+        mProgressDialog.setTitle("Loading");
+        mProgressDialog.setMessage("Loading");
+        mProgressDialog.show();
+        mProgressDialog.setCanceledOnTouchOutside(false);
+
         mAuth = FirebaseAuth.getInstance();
         Add = findViewById(R.id.add);
         Profile = findViewById(R.id.profile);
@@ -65,8 +79,6 @@ public class MainActivity extends AppCompatActivity implements PrescriptionsAdap
         mCurrentUser = mAuth.getCurrentUser();
         mNoPatients = findViewById(R.id.no_patients);
         mPatientsLists =findViewById(R.id.patients_list);
-
-
 
         if (mAuth.getCurrentUser() != null) {
             mCurrentUserId = mCurrentUser.getUid();
@@ -119,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements PrescriptionsAdap
                 @Override
                 public void onClick(View v) {
 
-                    Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                    Intent intent = new Intent(MainActivity.this, FinalProfileActivity.class);
                     intent.putExtra("access","true");
                     startActivity(intent);
 
@@ -183,6 +195,7 @@ public class MainActivity extends AppCompatActivity implements PrescriptionsAdap
                 }else {
                     mNoPatients.setVisibility(View.VISIBLE);
                     mPatientsLists.setVisibility(View.GONE);
+                    mProgressDialog.dismiss();
                 }
             }
 
@@ -238,6 +251,17 @@ public class MainActivity extends AppCompatActivity implements PrescriptionsAdap
                 Intent intent1 = new Intent(MainActivity.this, SourceActivity.class);
                 startActivity(intent1);
                 return true;
+            case R.id.report:
+                if (!prescriptionList.isEmpty()) {
+                    mProgressDialog.setTitle("Generating");
+                    mProgressDialog.setMessage("Report");
+                    mProgressDialog.show();
+                    mProgressDialog.setCanceledOnTouchOutside(false);
+                    export();
+                }else{
+                    Toast.makeText(MainActivity.this, "No Records Found", Toast.LENGTH_SHORT).show();
+                }
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -252,5 +276,51 @@ public class MainActivity extends AppCompatActivity implements PrescriptionsAdap
     @Override
     public void onSearchSelected(Prescription prescription) {
 
+    }
+
+    public void export() {
+
+        if (!prescriptionList.isEmpty()) {
+            StringBuilder data = new StringBuilder();
+            data.append("S.No.,Timestamp,Name,Phone Number,Gender,Age,Email Address,Reason of Visit,City,State,Country,Address");
+            for (int i = 0; i < prescriptionList.size(); i++) {
+                data.append("\n" + String.valueOf(i + 1) +
+                        "," + prescriptionList.get(i).getTimestamp() +
+                        "," + prescriptionList.get(i).getName() +
+                        "," + prescriptionList.get(i).getPhone_number() +
+                        "," + prescriptionList.get(i).getGender() +
+                        "," + prescriptionList.get(i).getAge() +
+                        "," + prescriptionList.get(i).getEmail() +
+                        "," + prescriptionList.get(i).getDetails().replaceAll(",","/") +
+                        "," + prescriptionList.get(i).getCity() +
+                        "," + prescriptionList.get(i).getState() +
+                        "," + prescriptionList.get(i).getCountry() +
+                        "," + prescriptionList.get(i).getAddress().replaceAll(",","/")
+                );
+            }
+
+            mProgressDialog.dismiss();
+            try {
+                //saving the file into device
+                FileOutputStream out = openFileOutput("patients.csv", Context.MODE_PRIVATE);
+                out.write((data.toString()).getBytes());
+                out.close();
+
+                //exporting
+                Context context = getApplicationContext();
+                File filelocation = new File(getFilesDir(), "patients.csv");
+                Uri path = FileProvider.getUriForFile(context, "com.fordoctors.fordoctors.fileprovider", filelocation);
+                Intent fileIntent = new Intent(Intent.ACTION_SEND);
+                fileIntent.setType("text/csv");
+                fileIntent.putExtra(Intent.EXTRA_SUBJECT, "Data");
+                fileIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                fileIntent.putExtra(Intent.EXTRA_STREAM, path);
+                startActivity(Intent.createChooser(fileIntent, "Send mail"));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else{
+            Toast.makeText(this, "No Records", Toast.LENGTH_SHORT).show();
+        }
     }
 }

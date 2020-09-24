@@ -40,12 +40,12 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/edit_profile_profile_image"
                     android:layout_centerHorizontal="true"
-                    android:fontFamily="@font/nunito"
+                    android:fontFamily="@font/quicksand_medium"
                     android:text="Change Photo"
                     android:textColor="@color/colorPrimary"
                     android:textSize="15sp" />
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/name_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -60,10 +60,10 @@
                         android:hint="Name"
                         android:inputType="textCapWords"
                         android:textColor="@color/colorBlack"
-                        android:textSize="18dp" />
-                </android.support.design.widget.TextInputLayout>
+                        android:textSize="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/unique_key_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -74,13 +74,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/nunito"
+                        android:fontFamily="@font/quicksand_medium"
                         android:hint="Unique Permanent Registration Number (UPRN)"
                         android:inputType="text"
                         android:textColor="@color/colorBlack"
-                        android:textSize="18dp" />
-                </android.support.design.widget.TextInputLayout>
-                <android.support.design.widget.TextInputLayout
+                        android:textSize="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/age_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -91,12 +91,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/nunito"
+                        android:fontFamily="@font/quicksand_medium"
                         android:hint="Age"
                         android:inputType="number"
                         android:textColor="@color/colorBlack"
-                        android:textSize="18dp" />
-                </android.support.design.widget.TextInputLayout>
+                        android:textSize="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
 
                 <RadioGroup
@@ -109,36 +109,36 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:text="Male"
-                        android:textSize="18dp"
+                        android:textSize="16dp"
                         android:checked="true"
                         android:id="@+id/edit_profile_male"
                         android:layout_weight="1"
                         android:textColor="@color/colorBlack"
-                        android:fontFamily="@font/nunito"
+                        android:fontFamily="@font/quicksand_medium"
                         android:layout_height="wrap_content"/>
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:text="Female"
-                        android:textSize="18dp"
+                        android:textSize="16dp"
                         android:id="@+id/edit_profile_female"
                         android:layout_weight="1"
                         android:textColor="@color/colorBlack"
-                        android:fontFamily="@font/nunito"
+                        android:fontFamily="@font/quicksand_medium"
                         android:layout_height="wrap_content"/>
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:text="Others"
-                        android:textSize="18dp"
+                        android:textSize="16dp"
                         android:layout_weight="1"
                         android:id="@+id/edit_profile_others"
                         android:textColor="@color/colorBlack"
-                        android:fontFamily="@font/nunito"
+                        android:fontFamily="@font/quicksand_medium"
                         android:layout_height="wrap_content"/>
 
                 </RadioGroup>
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/place_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -149,14 +149,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/nunito"
+                        android:fontFamily="@font/quicksand_medium"
                         android:hint="Address"
                         android:inputType="textCapWords"
                         android:textColor="@color/colorBlack"
-                        android:textSize="18dp" />
-                </android.support.design.widget.TextInputLayout>
+                        android:textSize="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/city_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -167,14 +167,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/nunito"
+                        android:fontFamily="@font/quicksand_medium"
                         android:hint="City"
                         android:inputType="textCapWords"
                         android:textColor="@color/colorBlack"
-                        android:textSize="18dp" />
-                </android.support.design.widget.TextInputLayout>
+                        android:textSize="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/state_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -185,14 +185,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/nunito"
+                        android:fontFamily="@font/quicksand_medium"
                         android:hint="State"
                         android:inputType="textCapWords"
                         android:textColor="@color/colorBlack"
-                        android:textSize="18dp" />
-                </android.support.design.widget.TextInputLayout>
+                        android:textSize="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/country_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -203,14 +203,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/nunito"
+                        android:fontFamily="@font/quicksand_medium"
                         android:hint="Country"
                         android:inputType="textCapWords"
                         android:textColor="@color/colorBlack"
-                        android:textSize="18dp" />
-                </android.support.design.widget.TextInputLayout>
+                        android:textSize="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/email_address_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -221,33 +221,58 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/nunito"
+                        android:fontFamily="@font/quicksand_medium"
                         android:hint="Email Address"
                         android:inputType="textEmailAddress"
                         android:textColor="@color/colorBlack"
-                        android:textSize="18dp" />
-                </android.support.design.widget.TextInputLayout>
+                        android:textSize="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/edit_profile_phone_number"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:layout_below="@+id/email_address_text"
-                    android:fontFamily="@font/nunito"
-                    android:hint="Phone Number"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="18dp" />
+                    android:id="@+id/phone_number_details"
+                    android:layout_marginLeft="2dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textSize="15dp"
+                            android:text="Phone Number"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorBlack"
+                            android:fontFamily="@font/quicksand_medium"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+
+                        <TextView
+                            android:id="@+id/edit_profile_phone_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/quicksand_medium"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
 
 
             </RelativeLayout>
 
-            <android.support.design.widget.AppBarLayout
+            <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/edit_profile_app_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimaryDark">
 
-                <android.support.v7.widget.Toolbar
+                <androidx.appcompat.widget.Toolbar
                     android:id="@+id/edit_profile_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -272,16 +297,16 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
                             android:layout_toEndOf="@id/edit_profile_back"
-                            android:fontFamily="@font/nunito"
+                            android:fontFamily="@font/quicksand_medium"
                             android:text="Edit Profile"
                             android:textColor="@color/colorWhite"
-                            android:textSize="18sp" />
+                            android:textSize="16dp" />
 
                     </RelativeLayout>
 
 
-                </android.support.v7.widget.Toolbar>
-            </android.support.design.widget.AppBarLayout>
+                </androidx.appcompat.widget.Toolbar>
+            </com.google.android.material.appbar.AppBarLayout>
 
         </RelativeLayout>
 
@@ -294,7 +319,7 @@
         android:gravity="right"
         android:orientation="horizontal">
 
-        <android.support.design.widget.FloatingActionButton
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/edit_profile_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
